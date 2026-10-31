@@ -1,0 +1,204 @@
+:root {
+    --bg-color: #0c0914;
+    --card-bg: #161026;
+    --card-border: #2d1f4e;
+    --accent-purple: #8b3dff;
+    --accent-glow: rgba(139, 61, 255, 0.35);
+    --text-main: #f3f0ff;
+    --text-muted: #9b8ebc;
+    --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+/* Навигация */
+header {
+    background: rgba(12, 9, 20, 0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--card-border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--text-main);
+    text-decoration: none;
+    text-shadow: 0 0 12px var(--accent-glow);
+}
+
+.logo span {
+    color: var(--accent-purple);
+}
+
+.nav-links {
+    display: flex;
+    gap: 25px;
+    list-style: none;
+}
+
+.nav-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+    transition: var(--transition);
+    position: relative;
+    padding: 5px 0;
+}
+
+.nav-links a:hover, .nav-links a.active {
+    color: var(--text-main);
+    text-shadow: 0 0 8px var(--accent-glow);
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--accent-purple);
+    transition: var(--transition);
+    box-shadow: 0 0 8px var(--accent-purple);
+}
+
+.nav-links a:hover::after, .nav-links a.active::after {
+    width: 100%;
+}
+
+/* Основной контент */
+main {
+    flex: 1;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 40px 20px;
+    animation: fadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Сетки и карточки */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 25px;
+    margin-top: 25px;
+}
+
+.card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    padding: 25px;
+    text-align: center;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    border-color: var(--accent-purple);
+    box-shadow: 0 12px 30px rgba(139, 61, 255, 0.2);
+}
+
+.card h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.card p {
+    color: var(--text-muted);
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+/* Кнопки */
+.btn {
+    background: linear-gradient(135deg, #7b2cbf, var(--accent-purple));
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: 0 4px 15px rgba(139, 61, 255, 0.3);
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 22px rgba(139, 61, 255, 0.5);
+    filter: brightness(1.1);
+}
+
+.btn:active {
+    transform: translateY(1px);
+}
+
+/* Герой блок */
+.hero {
+    text-align: center;
+    padding: 60px 20px;
+    background: radial-gradient(circle at center, rgba(45, 31, 78, 0.4) 0%, transparent 70%);
+    border-radius: 24px;
+    margin-bottom: 40px;
+}
+
+.hero h1 {
+    font-size: 46px;
+    margin-bottom: 20px;
+    background: linear-gradient(135deg, #ffffff, var(--accent-purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero p {
+    color: var(--text-muted);
+    font-size: 18px;
+    max-width: 600px;
+    margin: 0 auto 30px;
+}
+
+/* Футер */
+footer {
+    text-align: center;
+    padding: 30px;
+    border-top: 1px solid var(--card-border);
+    color: var(--text-muted);
+    font-size: 14px;
+    background: var(--bg-color);
+}
